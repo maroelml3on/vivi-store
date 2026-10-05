@@ -23,7 +23,7 @@
             "L",
             "XL"
           ],
-          "image": "http://localhost:3000/uploads/1791222474852-b22c797af9.jpeg"
+          "image": "/uploads/1791222474852-b22c797af9.jpeg"
         },
         {
           "id": "c002",
@@ -36,7 +36,7 @@
             "L",
             "XL"
           ],
-          "image": "http://localhost:3000/uploads/1791222453160-7b5f6d78b2.jpeg"
+          "image": "/uploads/1791222453160-7b5f6d78b2.jpeg"
         }
       ]
     },
@@ -58,7 +58,7 @@
             "XL",
             "XXL"
           ],
-          "image": "http://localhost:3000/uploads/1791221909810-f89306fbdb.jpeg"
+          "image": "/uploads/1791221909810-f89306fbdb.jpeg"
         },
         {
           "id": "c004",
@@ -71,7 +71,7 @@
             "XL",
             "XXL"
           ],
-          "image": "http://localhost:3000/uploads/1791222007201-a751cdd080.jpeg"
+          "image": "/uploads/1791222007201-a751cdd080.jpeg"
         }
       ]
     },
@@ -92,7 +92,7 @@
             "L",
             "XL"
           ],
-          "image": "http://localhost:3000/uploads/1791223419513-34f8d3ee5b.jpeg"
+          "image": "/uploads/1791223419513-34f8d3ee5b.jpeg"
         },
         {
           "id": "color-1791222632219-15",
@@ -105,7 +105,7 @@
             "L",
             "XL"
           ],
-          "image": "http://localhost:3000/uploads/1791223431463-cdfdca9605.jpeg"
+          "image": "/uploads/1791223431463-cdfdca9605.jpeg"
         }
       ]
     },
