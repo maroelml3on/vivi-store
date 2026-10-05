@@ -939,7 +939,7 @@ app.use(
 
 ensureDB();
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("");
   console.log("================================");
   console.log("       VINI STORE ONLINE");
