@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VINI — تسجيل دخول المالك</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, #252525 0, transparent 35%),
+        #090909;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-box {
+      width: min(430px, 100%);
+      padding: 38px;
+      border: 1px solid #2c2c2c;
+      border-radius: 24px;
+      background: #111;
+      box-shadow: 0 25px 80px rgba(0,0,0,.45);
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #999;
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      margin: 0 0 8px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      height: 52px;
+      margin-bottom: 18px;
+      padding: 0 15px;
+      border: 1px solid #333;
+      border-radius: 12px;
+      outline: none;
+      background: #181818;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input:focus {
+      border-color: #777;
+    }
+
+    button {
+      width: 100%;
+      height: 52px;
+      border: 0;
+      border-radius: 12px;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .error {
+      display: none;
+      margin-bottom: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #2b1515;
+      color: #ff9a9a;
+      font-size: 14px;
+    }
+
+    .back {
+      display: block;
+      margin-top: 22px;
+      color: #888;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="login-box">
+
+    <div class="logo">VINI</div>
+
+    <div class="subtitle">
+      لوحة المالك — تسجيل الدخول
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <form id="loginForm">
+
+      <label for="username">اسم المستخدم</label>
+
+      <input
+        id="username"
+        name="username"
+        type="text"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">كلمة المرور</label>
+
+      <input
+        id="password"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button id="loginButton" type="submit">
+        دخول لوحة المالك
+      </button>
+
+    </form>
+
+    <a class="back" href="/">
+      العودة إلى المتجر
+    </a>
+
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const errorBox = document.getElementById("error");
+    const button = document.getElementById("loginButton");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      errorBox.style.display = "none";
+      button.disabled = true;
+      button.textContent = "جاري التحقق...";
+
+      try {
+        const response = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            username:
+              document.getElementById("username").value.trim(),
+
+            password:
+              document.getElementById("password").value
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.error || "بيانات الدخول غير صحيحة"
+          );
+        }
+
+        window.location.href = "/admin";
+
+      } catch (error) {
+
+        errorBox.textContent =
+          error.message || "حدث خطأ أثناء تسجيل الدخول";
+
+        errorBox.style.display = "block";
+
+      } finally {
+
+        button.disabled = false;
+        button.textContent = "دخول لوحة المالك";
+
+      }
+    });
+  </script>
+
+</body>
+</html>

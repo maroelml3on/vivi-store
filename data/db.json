@@ -1,0 +1,181 @@
+{
+  "settings": {
+    "storeName": "VINI",
+    "currency": "جنيه",
+    "lowStockThreshold": 5
+  },
+  "products": [
+    {
+      "id": "p001",
+      "name": "VINI Essential T-Shirt",
+      "category": "تيشيرتات",
+      "description": "تيشيرت بقصة عصرية وخامة مريحة للاستخدام اليومي.",
+      "featured": true,
+      "colors": [
+        {
+          "id": "c001",
+          "name": "ابيض",
+          "price": 599,
+          "stock": 20,
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "image": "http://localhost:3000/uploads/1791222474852-b22c797af9.jpeg"
+        },
+        {
+          "id": "c002",
+          "name": "أسود",
+          "price": 599,
+          "stock": 15,
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "image": "http://localhost:3000/uploads/1791222453160-7b5f6d78b2.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "p002",
+      "name": "VINI Oversized Hoodie",
+      "category": "هوديز",
+      "description": "هودي Oversized بتصميم نظيف وشعار VINI بسيط.",
+      "featured": true,
+      "colors": [
+        {
+          "id": "c003",
+          "name": "ابيض",
+          "price": 1199,
+          "stock": 12,
+          "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ],
+          "image": "http://localhost:3000/uploads/1791221909810-f89306fbdb.jpeg"
+        },
+        {
+          "id": "c004",
+          "name": "أسود",
+          "price": 1249,
+          "stock": 6,
+          "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ],
+          "image": "http://localhost:3000/uploads/1791222007201-a751cdd080.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "p003",
+      "name": "VINI Relaxed Pants",
+      "category": "بناطيل",
+      "description": "بنطلون Relaxed Fit بتصميم بسيط ومريح.",
+      "featured": true,
+      "colors": [
+        {
+          "id": "c005",
+          "name": "أسود",
+          "price": 999,
+          "stock": 18,
+          "sizes": [
+            "M",
+            "L",
+            "XL"
+          ],
+          "image": "http://localhost:3000/uploads/1791223419513-34f8d3ee5b.jpeg"
+        },
+        {
+          "id": "color-1791222632219-15",
+          "name": "ابيض",
+          "price": 999,
+          "stock": 2000,
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "image": "http://localhost:3000/uploads/1791223431463-cdfdca9605.jpeg"
+        }
+      ]
+    },
+    {
+      "id": "p004",
+      "name": "VINI Premium Jacket",
+      "category": "جاكيتات",
+      "description": "جاكيت Premium بتفاصيل بسيطة ومظهر فاخر.",
+      "featured": false,
+      "colors": [
+        {
+          "id": "c006",
+          "name": "أسود",
+          "price": 1799,
+          "stock": 20000,
+          "sizes": [
+            "M",
+            "L",
+            "XL"
+          ],
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=85"
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "VINI-12785353",
+      "customer": {
+        "name": "حسن جودة",
+        "phone": "01042265026"
+      },
+      "items": [
+        {
+          "productId": "p002",
+          "colorId": "c004",
+          "name": "VINI Oversized Hoodie",
+          "color": "أسود",
+          "size": "L",
+          "quantity": 3,
+          "price": 1249,
+          "image": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=1000&q=85"
+        },
+        {
+          "productId": "p004",
+          "colorId": "c006",
+          "name": "VINI Premium Jacket",
+          "color": "أسود",
+          "size": "XL",
+          "quantity": 2,
+          "price": 1799,
+          "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=85"
+        }
+      ],
+      "total": 7345,
+      "address": "مصر",
+      "paymentMethod": "cod",
+      "notes": "هلا والله",
+      "status": "جديد",
+      "createdAt": "2026-10-05T15:06:25.353Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cus_51939bd9dd85",
+      "name": "حسن جودة",
+      "phone": "01042265026",
+      "orders": 1,
+      "totalSpent": 7345,
+      "lastOrder": "2026-10-05T15:06:25.353Z"
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VINI Admin Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-brand">
+        <div class="brand-logo">V</div>
+
+        <div>
+          <strong>VINI</strong>
+          <span>ADMIN PANEL</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <button class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">▦</span>
+          <span>لوحة التحكم</span>
+        </button>
+
+        <button class="nav-item" data-section="products">
+          <span class="nav-icon">□</span>
+          <span>المنتجات</span>
+        </button>
+
+        <button class="nav-item" data-section="orders">
+          <span class="nav-icon">◫</span>
+          <span>الطلبات</span>
+        </button>
+
+        <button class="nav-item" data-section="customers">
+          <span class="nav-icon">♙</span>
+          <span>العملاء</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <a href="/" class="back-store">
+          <span>←</span>
+          <span>العودة للمتجر</span>
+        </a>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+
+        <div class="mobile-brand">
+          <button id="mobileMenuBtn" class="icon-btn">☰</button>
+          <strong>VINI</strong>
+        </div>
+
+        <div class="topbar-title">
+          <span class="eyebrow">VINI MANAGEMENT</span>
+          <h1 id="pageTitle">لوحة التحكم</h1>
+        </div>
+
+        <div class="topbar-actions">
+
+          <a href="/" target="_blank" class="view-store">
+            مشاهدة المتجر ↗
+          </a>
+
+        </div>
+
+      </header>
+
+
+      <!-- ================= DASHBOARD ================= -->
+
+      <section id="dashboardSection" class="page-section active">
+
+        <div class="section-heading">
+          <div>
+            <span class="section-label">OVERVIEW</span>
+            <h2>نظرة عامة</h2>
+            <p>تابع أداء متجر VINI وإحصائيات المبيعات والمخزون.</p>
+          </div>
+        </div>
+
+
+        <!-- STAT CARDS -->
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>إجمالي المنتجات</span>
+              <div class="stat-icon">□</div>
+            </div>
+
+            <strong id="statProducts">0</strong>
+            <small>منتج في المتجر</small>
+          </div>
+
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>إجمالي الطلبات</span>
+              <div class="stat-icon">◫</div>
+            </div>
+
+            <strong id="statOrders">0</strong>
+            <small>طلب مسجل</small>
+          </div>
+
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <span>العملاء</span>
+              <div class="stat-icon">♙</div>
+            </div>
+
+            <strong id="statCustomers">0</strong>
+            <small>عميل مسجل</small>
+          </div>
+
+
+          <div class="stat-card highlight">
+            <div class="stat-top">
+              <span>الإيرادات</span>
+              <div class="stat-icon">₤</div>
+            </div>
+
+            <strong id="statRevenue">0 ج</strong>
+            <small>إجمالي قيمة الطلبات</small>
+          </div>
+
+        </div>
+
+
+        <!-- SECONDARY STATS -->
+
+        <div class="secondary-stats">
+
+          <div class="mini-card">
+            <span>طلبات جديدة</span>
+            <strong id="statPending">0</strong>
+          </div>
+
+          <div class="mini-card">
+            <span>إجمالي المخزون</span>
+            <strong id="statStock">0</strong>
+          </div>
+
+          <div class="mini-card warning">
+            <span>مخزون منخفض</span>
+            <strong id="statLowStock">0</strong>
+          </div>
+
+        </div>
+
+
+        <!-- DASHBOARD CONTENT -->
+
+        <div class="dashboard-columns">
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="panel-label">RECENT</span>
+                <h3>أحدث الطلبات</h3>
+              </div>
+
+              <button class="text-btn" data-go="orders">
+                عرض الكل →
+              </button>
+            </div>
+
+            <div id="recentOrders" class="recent-orders">
+              <div class="empty-state">لا توجد طلبات حتى الآن.</div>
+            </div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="panel-label">STOCK</span>
+                <h3>تنبيه المخزون</h3>
+              </div>
+
+              <button class="text-btn" data-go="products">
+                المنتجات →
+              </button>
+            </div>
+
+            <div id="lowStockProducts" class="low-stock-list">
+              <div class="empty-state">لا توجد منتجات منخفضة المخزون.</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= PRODUCTS ================= -->
+
+      <section id="productsSection" class="page-section">
+
+        <div class="section-heading products-heading">
+
+          <div>
+            <span class="section-label">CATALOG</span>
+            <h2>إدارة المنتجات</h2>
+            <p>إضافة وتعديل المنتجات والألوان والأسعار والمخزون والمقاسات.</p>
+          </div>
+
+          <button id="addProductBtn" class="primary-btn">
+            + إضافة منتج
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="table-toolbar">
+
+            <div class="search-box">
+              <span>⌕</span>
+              <input
+                type="search"
+                id="productSearch"
+                placeholder="ابحث عن منتج..."
+              >
+            </div>
+
+            <select id="productCategoryFilter">
+              <option value="">كل التصنيفات</option>
+            </select>
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table class="data-table">
+
+              <thead>
+                <tr>
+                  <th>المنتج</th>
+                  <th>التصنيف</th>
+                  <th>الألوان</th>
+                  <th>السعر</th>
+                  <th>المخزون</th>
+                  <th>الحالة</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+
+              <tbody id="productsTableBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= ORDERS ================= -->
+
+      <section id="ordersSection" class="page-section">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="section-label">ORDERS</span>
+            <h2>الطلبات</h2>
+            <p>متابعة الطلبات وتحديث حالتها.</p>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="table-toolbar">
+
+            <div class="search-box">
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="orderSearch"
+                placeholder="ابحث برقم الطلب أو اسم العميل..."
+              >
+            </div>
+
+            <select id="orderStatusFilter">
+              <option value="">كل الحالات</option>
+              <option value="new">جديد</option>
+              <option value="processing">قيد التجهيز</option>
+              <option value="shipped">تم الشحن</option>
+              <option value="completed">مكتمل</option>
+              <option value="cancelled">ملغي</option>
+            </select>
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table class="data-table">
+
+              <thead>
+                <tr>
+                  <th>رقم الطلب</th>
+                  <th>العميل</th>
+                  <th>المنتجات</th>
+                  <th>الإجمالي</th>
+                  <th>التاريخ</th>
+                  <th>الحالة</th>
+                </tr>
+              </thead>
+
+              <tbody id="ordersTableBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= CUSTOMERS ================= -->
+
+      <section id="customersSection" class="page-section">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="section-label">CUSTOMERS</span>
+            <h2>العملاء</h2>
+            <p>قائمة العملاء والبيانات المرتبطة بالطلبات.</p>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="table-toolbar">
+
+            <div class="search-box">
+              <span>⌕</span>
+
+              <input
+                type="search"
+                id="customerSearch"
+                placeholder="ابحث باسم العميل أو رقم الهاتف..."
+              >
+            </div>
+
+          </div>
+
+
+          <div class="table-wrapper">
+
+            <table class="data-table">
+
+              <thead>
+                <tr>
+                  <th>العميل</th>
+                  <th>الهاتف</th>
+                  <th>العنوان</th>
+                  <th>عدد الطلبات</th>
+                  <th>إجمالي الإنفاق</th>
+                  <th>آخر طلب</th>
+                </tr>
+              </thead>
+
+              <tbody id="customersTableBody"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ================= PRODUCT MODAL ================= -->
+
+  <div id="productModal" class="modal">
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card large-modal">
+
+      <div class="modal-header">
+
+        <div>
+          <span class="section-label">PRODUCT</span>
+          <h2 id="productModalTitle">إضافة منتج</h2>
+        </div>
+
+        <button class="close-modal" data-close-modal>×</button>
+
+      </div>
+
+
+      <form id="productForm">
+
+        <input type="hidden" id="productId">
+
+
+        <div class="form-grid">
+
+          <div class="form-group full">
+            <label>اسم المنتج</label>
+
+            <input
+              id="productName"
+              type="text"
+              placeholder="مثال: VINI Essential T-Shirt"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+
+            <label>التصنيف</label>
+
+            <input
+              id="productCategory"
+              type="text"
+              placeholder="مثال: تيشيرتات"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>المنتج مميز؟</label>
+
+            <label class="switch-row">
+
+              <input
+                id="productFeatured"
+                type="checkbox"
+              >
+
+              <span>عرض المنتج في المنتجات المميزة</span>
+
+            </label>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>الوصف</label>
+
+            <textarea
+              id="productDescription"
+              rows="4"
+              placeholder="اكتب وصف المنتج..."
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <!-- COLORS -->
+
+        <div class="colors-editor">
+
+          <div class="colors-heading">
+
+            <div>
+              <span class="section-label">VARIANTS</span>
+              <h3>ألوان المنتج</h3>
+              <p>كل لون يمكن أن يمتلك صورة وسعر ومخزون ومقاسات مختلفة.</p>
+            </div>
+
+            <button
+              type="button"
+              id="addColorBtn"
+              class="secondary-btn"
+            >
+              + إضافة لون
+            </button>
+
+          </div>
+
+
+          <div id="colorsContainer"></div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal
+          >
+            إلغاء
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            حفظ المنتج
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= TOAST ================= -->
+
+  <div id="adminToast" class="admin-toast"></div>
+
+
+  <script src="/admin/admin.js"></script>
+
+</body>
+</html>
