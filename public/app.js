@@ -985,6 +985,179 @@ function closeCart() {
 }
 
 
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+function renderCheckoutOrderSummary() {
+
+    const box = document.getElementById("checkoutOrderDetails");
+
+    if (!box) return;
+
+    if (!state.cart.length) {
+        box.innerHTML = "";
+        return;
+    }
+
+    box.innerHTML = `
+        <div class="checkout-details-title">
+            ملخص الطلب
+        </div>
+
+        <div class="checkout-details-list">
+            ${state.cart.map(item => `
+                <div class="checkout-detail-item">
+
+                    <div class="checkout-detail-image">
+                        ${item.image
+                            ? `<img src="${escapeHTML(item.image)}" alt="">`
+                            : ""
+                        }
+                    </div>
+
+                    <div class="checkout-detail-info">
+
+                        <strong>
+                            ${escapeHTML(item.name || "منتج")}
+                        </strong>
+
+                        <span>
+                            اللون: ${escapeHTML(item.color || "-")}
+                            ${item.size
+                                ? ` • المقاس: ${escapeHTML(item.size)}`
+                                : ""
+                            }
+                        </span>
+
+                        <span>
+                            الكمية: ${Number(item.quantity || 0)}
+                        </span>
+
+                    </div>
+
+                    <strong class="checkout-detail-price">
+                        ${formatMoney(
+                            Number(item.price || 0) *
+                            Number(item.quantity || 0)
+                        )}
+                    </strong>
+
+                </div>
+            `).join("")}
+        </div>
+
+        <div class="checkout-details-total">
+            <span>الإجمالي النهائي</span>
+            <strong>${formatMoney(getCartTotal())}</strong>
+        </div>
+    `;
+}
+
+
+function renderOrderSuccessSummary(order) {
+
+    const box = document.getElementById("orderSuccessSummary");
+
+    if (!box) return;
+
+    const customer = order.customer || {};
+
+    box.hidden = false;
+
+    box.innerHTML = `
+        <div class="success-summary-header">
+            <span class="success-check">✓</span>
+            <div>
+                <strong>تم تأكيد طلبك بنجاح</strong>
+                <span>رقم الطلب: ${escapeHTML(order.id || "VINI")}</span>
+            </div>
+        </div>
+
+        <div class="success-summary-section">
+
+            <div class="success-summary-title">
+                تفاصيل الطلب
+            </div>
+
+            ${(order.items || []).map(item => `
+                <div class="success-order-item">
+
+                    <div>
+                        <strong>${escapeHTML(item.name || "منتج")}</strong>
+                        <span>
+                            ${escapeHTML(item.color || "-")}
+                            ${item.size
+                                ? ` • ${escapeHTML(item.size)}`
+                                : ""
+                            }
+                            • الكمية ${Number(item.quantity || 0)}
+                        </span>
+                    </div>
+
+                    <strong>
+                        ${formatMoney(
+                            Number(item.price || 0) *
+                            Number(item.quantity || 0)
+                        )}
+                    </strong>
+
+                </div>
+            `).join("")}
+
+        </div>
+
+        <div class="success-summary-section">
+
+            <div class="success-summary-row">
+                <span>العميل</span>
+                <strong>${escapeHTML(customer.name || "-")}</strong>
+            </div>
+
+            <div class="success-summary-row">
+                <span>الهاتف</span>
+                <strong>${escapeHTML(customer.phone || "-")}</strong>
+            </div>
+
+            <div class="success-summary-row">
+                <span>العنوان</span>
+                <strong>${escapeHTML(order.address || "-")}</strong>
+            </div>
+
+            <div class="success-summary-row">
+                <span>الدفع</span>
+                <strong>الدفع عند الاستلام</strong>
+            </div>
+
+            ${order.notes ? `
+                <div class="success-summary-row">
+                    <span>ملاحظات</span>
+                    <strong>${escapeHTML(order.notes)}</strong>
+                </div>
+            ` : ""}
+
+        </div>
+
+        <div class="success-summary-total">
+            <span>الإجمالي</span>
+            <strong>${formatMoney(order.total)}</strong>
+        </div>
+
+        <button
+            type="button"
+            class="success-close-button"
+            id="successCloseButton">
+            إغلاق
+        </button>
+    `;
+
+    document
+        .getElementById("successCloseButton")
+        ?.addEventListener("click", closeCheckout);
+}
+
+
 /* =========================================================
    CHECKOUT
 ========================================================= */
@@ -1596,3 +1769,26 @@ document.addEventListener(
 loadTheme();
 
 loadStore();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    renderCheckoutOrderSummary();
+
+    const checkoutModal = document.getElementById("checkoutModal");
+
+    if (checkoutModal) {
+
+        const observer = new MutationObserver(() => {
+            renderCheckoutOrderSummary();
+        });
+
+        observer.observe(checkoutModal, {
+            childList: true,
+            subtree: true
+        });
+
+    }
+
+});
+

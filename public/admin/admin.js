@@ -1663,6 +1663,194 @@ function renderOrders() {
 }
 
 
+
+function openOrderDetails(orderId) {
+
+    const order =
+        state.orders.find(
+            item => String(item.id) === String(orderId)
+        );
+
+    if (!order) {
+        showToast("تعذر العثور على الطلب.");
+        return;
+    }
+
+    const modal = $("#orderDetailsModal");
+    const content = $("#orderDetailsContent");
+
+    if (!modal || !content) return;
+
+    const customer = order.customer || {};
+
+    content.innerHTML = `
+
+      <div class="order-details-wrapper">
+
+        <div class="order-details-top">
+
+          <div>
+            <span>رقم الطلب</span>
+            <strong>${escapeHTML(order.id || "-")}</strong>
+          </div>
+
+          <div>
+            <span>التاريخ</span>
+            <strong>${escapeHTML(formatDateTime(order.createdAt))}</strong>
+          </div>
+
+          <div>
+            <span>الحالة</span>
+            <strong>${escapeHTML(order.status || "جديد")}</strong>
+          </div>
+
+        </div>
+
+
+        <div class="order-details-grid">
+
+          <div class="order-details-panel">
+
+            <h3>بيانات العميل</h3>
+
+            <div class="order-detail-row">
+              <span>الاسم</span>
+              <strong>${escapeHTML(customer.name || "-")}</strong>
+            </div>
+
+            <div class="order-detail-row">
+              <span>الهاتف</span>
+              <strong>${escapeHTML(customer.phone || "-")}</strong>
+            </div>
+
+            <div class="order-detail-row">
+              <span>العنوان</span>
+              <strong>${escapeHTML(order.address || "-")}</strong>
+            </div>
+
+            <div class="order-detail-row">
+              <span>طريقة الدفع</span>
+              <strong>الدفع عند الاستلام</strong>
+            </div>
+
+            ${order.notes ? `
+              <div class="order-detail-row">
+                <span>ملاحظات</span>
+                <strong>${escapeHTML(order.notes)}</strong>
+              </div>
+            ` : ""}
+
+          </div>
+
+
+          <div class="order-details-panel">
+
+            <h3>المنتجات</h3>
+
+            <div class="admin-order-items">
+
+              ${(order.items || []).map(item => `
+
+                <div class="admin-order-item">
+
+                  <div class="admin-order-item-image">
+
+                    ${item.image
+                      ? `<img src="${escapeHTML(item.image)}" alt="">`
+                      : ""
+                    }
+
+                  </div>
+
+                  <div class="admin-order-item-info">
+
+                    <strong>
+                      ${escapeHTML(item.name || "منتج")}
+                    </strong>
+
+                    <span>
+                      اللون: ${escapeHTML(item.color || "-")}
+                    </span>
+
+                    ${item.size ? `
+                      <span>
+                        المقاس: ${escapeHTML(item.size)}
+                      </span>
+                    ` : ""}
+
+                    <span>
+                      الكمية: ${Number(item.quantity || 0)}
+                    </span>
+
+                  </div>
+
+                  <strong>
+                    ${formatMoney(
+                      Number(item.price || 0) *
+                      Number(item.quantity || 0)
+                    )}
+                  </strong>
+
+                </div>
+
+              `).join("")}
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="order-details-total">
+
+          <span>إجمالي الطلب</span>
+
+          <strong>
+            ${formatMoney(order.total)}
+          </strong>
+
+        </div>
+
+      </div>
+    `;
+
+    modal.classList.add("open");
+}
+
+
+function closeOrderDetails() {
+
+    $("#orderDetailsModal")?.classList.remove("open");
+
+}
+
+
+document.addEventListener("click", event => {
+
+    const button =
+        event.target.closest("[data-order-details]");
+
+    if (button) {
+
+        openOrderDetails(
+            button.dataset.orderDetails
+        );
+
+        return;
+    }
+
+    if (
+        event.target.closest("[data-close-order-details]")
+    ) {
+
+        closeOrderDetails();
+
+    }
+
+});
+
+
 function addOrderSelectStyles() {
 
   if ($("#orderSelectStyles")) return;
@@ -1893,6 +2081,7 @@ document.addEventListener(
     if (event.key === "Escape") {
 
       closeProductModal();
+      closeOrderDetails();
 
       $(".sidebar")?.classList.remove("open");
 
