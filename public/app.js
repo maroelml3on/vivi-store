@@ -1177,6 +1177,16 @@ function openCheckout() {
 
     updateCheckoutSummary();
 
+    if (typeof renderCheckoutOrderSummary === "function") {
+        renderCheckoutOrderSummary();
+    }
+
+    const successBox = document.getElementById("orderSuccessSummary");
+    if (successBox) {
+        successBox.hidden = true;
+        successBox.innerHTML = "";
+    }
+
     lockBody();
 }
 
