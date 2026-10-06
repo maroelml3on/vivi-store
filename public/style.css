@@ -2426,3 +2426,515 @@ body.dark .footer-bottom {
     overflow: visible !important;
 }
 
+
+
+/* =========================================================
+   VINI — FINAL MOBILE RESPONSIVE SYSTEM
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+        touch-action: manipulation;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header {
+        width: 100%;
+    }
+
+    .header-inner {
+        width: calc(100% - 28px) !important;
+        min-height: 68px !important;
+        gap: 10px !important;
+    }
+
+    .main-nav {
+        display: none !important;
+    }
+
+    .mobile-menu-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        flex-shrink: 0 !important;
+        width: 44px !important;
+        height: 44px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        z-index: 1001 !important;
+    }
+
+    .cart-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        flex-shrink: 0 !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .cart-button > span:first-child {
+        display: none !important;
+    }
+
+    .brand {
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+
+    .brand-main {
+        white-space: nowrap !important;
+    }
+
+
+    /* ---------- MOBILE MENU ---------- */
+
+    .mobile-menu {
+        display: none;
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 2000 !important;
+        width: 100% !important;
+        height: 100dvh !important;
+        overflow-y: auto !important;
+    }
+
+    .mobile-menu.open {
+        display: block !important;
+    }
+
+    .mobile-menu-inner {
+        width: calc(100% - 28px) !important;
+        max-width: 600px !important;
+        margin: 80px auto 30px !important;
+    }
+
+    .mobile-menu-inner a,
+    .mobile-menu-inner button {
+        min-height: 52px !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        touch-action: manipulation;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero,
+    .shop-section,
+    .collections-section,
+    .about-section,
+    .newsletter-section {
+        width: calc(100% - 28px) !important;
+        max-width: none !important;
+    }
+
+    .hero {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hero-content {
+        width: 100% !important;
+    }
+
+    .hero-image-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-actions {
+        width: 100% !important;
+    }
+
+    .hero-actions .button,
+    .hero-actions a {
+        min-height: 50px !important;
+    }
+
+
+    /* ---------- SHOP CONTROLS ---------- */
+
+    .shop-controls {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .search-box {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .category-filters {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        flex-wrap: nowrap !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .category-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-button {
+        flex: 0 0 auto !important;
+        min-height: 44px !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* ---------- PRODUCTS ---------- */
+
+    .products-grid {
+        width: 100% !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .product-card {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .product-image-wrap {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .product-image-wrap img {
+        width: 100% !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+    }
+
+    .product-info {
+        min-width: 0 !important;
+    }
+
+    .product-name {
+        overflow-wrap: anywhere !important;
+    }
+
+    .product-quick-view {
+        display: none !important;
+    }
+
+    .add-to-cart-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        min-height: 48px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* ---------- PRODUCT MODAL ---------- */
+
+    .product-modal {
+        width: calc(100% - 20px) !important;
+        max-width: 700px !important;
+        max-height: 94dvh !important;
+        overflow-y: auto !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    .product-modal-image {
+        width: 100% !important;
+        min-height: 280px !important;
+        height: 45vh !important;
+        max-height: 420px !important;
+    }
+
+    .product-modal-content {
+        width: 100% !important;
+        padding: 25px 20px !important;
+    }
+
+    .color-options,
+    .size-options {
+        flex-wrap: wrap !important;
+    }
+
+    .color-option,
+    .size-option {
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+
+
+    /* ---------- CART ---------- */
+
+    .cart-drawer {
+        width: min(430px, 100vw) !important;
+        max-width: 100vw !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+    }
+
+    .cart-items {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cart-footer {
+        flex-shrink: 0 !important;
+        padding-bottom: max(18px, env(safe-area-inset-bottom)) !important;
+    }
+
+    .checkout-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        min-height: 52px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* ---------- CHECKOUT MODAL ---------- */
+
+    #checkoutModal {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #checkoutModal .checkout-modal {
+        width: calc(100% - 20px) !important;
+        max-width: 680px !important;
+        max-height: 94dvh !important;
+        height: auto !important;
+        overflow-y: auto !important;
+        padding: 28px 18px !important;
+        margin: 10px auto !important;
+    }
+
+    #checkoutModal .checkout-form {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    #checkoutModal .form-row {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    #checkoutModal input,
+    #checkoutModal textarea,
+    #checkoutModal select {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 48px !important;
+        font-size: 16px !important;
+    }
+
+    #checkoutModal .payment-options {
+        width: 100% !important;
+    }
+
+    #checkoutModal .payment-option {
+        min-height: 52px !important;
+    }
+
+
+    /* ---------- ORDER SUMMARY ---------- */
+
+    #checkoutOrderDetails {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: relative !important;
+        margin: 14px 0 !important;
+    }
+
+    #checkoutOrderDetails .checkout-details-title,
+    #checkoutOrderDetails .checkout-details-total {
+        display: flex !important;
+        width: 100% !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-list {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-item {
+        display: flex !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 76px !important;
+        align-items: center !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-image {
+        display: flex !important;
+        width: 62px !important;
+        height: 62px !important;
+        min-width: 62px !important;
+        flex-shrink: 0 !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-image img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-info {
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+        overflow: hidden !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-info strong,
+    #checkoutOrderDetails .checkout-detail-info span {
+        overflow-wrap: anywhere !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-price {
+        display: block !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* ---------- PLACE ORDER ---------- */
+
+    #checkoutModal #placeOrderButton,
+    #checkoutModal .place-order-button {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 20 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 54px !important;
+        height: auto !important;
+        margin: 16px 0 4px !important;
+        padding: 15px 20px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        overflow: visible !important;
+        touch-action: manipulation !important;
+    }
+
+    #checkoutModal #placeOrderButton:disabled {
+        opacity: 0.65 !important;
+    }
+
+    #checkoutMessage {
+        min-height: 24px !important;
+        width: 100% !important;
+        margin-bottom: 4px !important;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-main {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-brand {
+        grid-column: auto !important;
+    }
+
+
+    /* ---------- SAFE AREA ---------- */
+
+    .checkout-modal,
+    .cart-drawer,
+    .mobile-menu {
+        padding-bottom: max(20px, env(safe-area-inset-bottom)) !important;
+    }
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 420px) {
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .product-info {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .product-name {
+        font-size: 11px !important;
+    }
+
+    .product-price {
+        font-size: 10px !important;
+    }
+
+    #checkoutModal .checkout-modal {
+        width: calc(100% - 12px) !important;
+        padding: 22px 14px !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-image {
+        width: 56px !important;
+        height: 56px !important;
+        min-width: 56px !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-price {
+        font-size: 11px !important;
+    }
+}
+
