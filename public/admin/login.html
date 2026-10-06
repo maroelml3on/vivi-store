@@ -157,6 +157,24 @@
   </main>
 
   <script>
+    // إذا كان المالك مسجل دخول بالفعل، افتح لوحة التحكم مباشرة
+    (async () => {
+      try {
+        const response = await fetch("/api/auth/me", {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store"
+        });
+
+        if (response.ok) {
+          window.location.replace("/admin");
+          return;
+        }
+      } catch (_) {
+        // نستمر في عرض صفحة تسجيل الدخول إذا تعذر فحص الجلسة
+      }
+    })();
+
     const form = document.getElementById("loginForm");
     const errorBox = document.getElementById("error");
     const button = document.getElementById("loginButton");
