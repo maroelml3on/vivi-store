@@ -2388,3 +2388,41 @@ body.dark .footer-bottom {
     overflow: visible !important;
 }
 
+
+/* VINI CHECKOUT BUTTON - ALWAYS VISIBLE */
+#checkoutModal #placeOrderButton,
+#checkoutModal .place-order-button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    min-height: 54px !important;
+    height: auto !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 18px !important;
+    padding: 15px 20px !important;
+    flex-shrink: 0 !important;
+}
+
+#checkoutModal .checkout-modal {
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+}
+
+#checkoutModal .checkout-form {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+#checkoutModal #checkoutOrderDetails {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
