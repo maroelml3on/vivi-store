@@ -2287,3 +2287,66 @@ body.dark .footer-bottom {
     }
 
 }
+
+/* MOBILE CHECKOUT ORDER SUMMARY FIX */
+@media (max-width: 768px) {
+    #checkoutOrderDetails {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: relative !important;
+        margin: 16px 0 !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-list {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-item {
+        display: flex !important;
+        width: 100% !important;
+        min-height: 80px !important;
+        visibility: visible !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-image {
+        display: flex !important;
+        width: 64px !important;
+        height: 64px !important;
+        flex-shrink: 0 !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-image img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-info {
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-price {
+        display: block !important;
+        visibility: visible !important;
+        white-space: nowrap !important;
+    }
+
+    #checkoutOrderDetails .checkout-detail-total {
+        display: flex !important;
+        visibility: visible !important;
+        width: 100% !important;
+    }
+}
+

@@ -1162,6 +1162,69 @@ function renderOrderSuccessSummary(order) {
    CHECKOUT
 ========================================================= */
 
+
+function renderCheckoutOrderSummary() {
+    const box = document.getElementById("checkoutOrderDetails");
+    if (!box) return;
+
+    const cart = Array.isArray(state.cart) ? state.cart : [];
+
+    if (!cart.length) {
+        box.innerHTML = `
+            <div class="checkout-detail-empty">
+                لا توجد منتجات في السلة
+            </div>
+        `;
+        return;
+    }
+
+    box.innerHTML = `
+        <div class="checkout-details-title">
+            <span>ملخص الطلب</span>
+            <strong>${cart.length} منتج</strong>
+        </div>
+
+        <div class="checkout-detail-list">
+            ${cart.map(item => {
+                const name = escapeHTML(String(item.name || "منتج"));
+                const color = escapeHTML(String(item.color || ""));
+                const size = escapeHTML(String(item.size || ""));
+                const quantity = Number(item.quantity || 1);
+                const price = Number(item.price || 0);
+                const image = String(item.image || "");
+
+                return `
+                    <div class="checkout-detail-item">
+                        <div class="checkout-detail-image">
+                            ${
+                                image
+                                    ? `<img src="${escapeHTML(image)}" alt="${name}">`
+                                    : `<div class="checkout-no-image">VINI</div>`
+                            }
+                        </div>
+
+                        <div class="checkout-detail-info">
+                            <strong>${name}</strong>
+                            ${color ? `<span>اللون: ${color}</span>` : ""}
+                            ${size ? `<span>المقاس: ${size}</span>` : ""}
+                            <span>الكمية: ${quantity}</span>
+                        </div>
+
+                        <div class="checkout-detail-price">
+                            ${formatMoney(price * quantity)}
+                        </div>
+                    </div>
+                `;
+            }).join("")}
+        </div>
+
+        <div class="checkout-detail-total">
+            <span>الإجمالي</span>
+            <strong>${formatMoney(getCartTotal())}</strong>
+        </div>
+    `;
+}
+
 function openCheckout() {
 
     if (!state.cart.length) {
